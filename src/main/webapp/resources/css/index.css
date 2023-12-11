@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+main {
+ 
+  background-color: #f2f2f2;
+  padding: 20px;
+  width : 90%;
+  margin: 50px auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+h1 {
+	text-shadow: 5px 5px 5px #999999;
+	font-size: 35px;
+}
+
+.hamburger {
+    display: none;
+}
+
+body {
+    /* width:100%; */
+}
+nav {
+	margin-top: 30px;
+    background-color: #032420;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    font-size: 1.5rem;
+    width:100%;
+}
+
+.menu {
+	width:100%;
+}
+
+nav ul {
+	width : 100%;
+    list-style: none;   
+}
+
+ul a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.logo {
+    padding: 0px;
+}
+.logo .logo_title {
+    margin-left: 15px;
+}
+
+
+.menu ul {
+    display: flex;
+    justify-content: space-around;
+    /* width:100%; */
+ 
+}
+.menu ul li{
+    
+    border-radius: 6px;
+    /* width: 100%; */
+}
+
+.icon_menu ul{
+    display: flex;
+    
+}
+.icon_menu  ul li {
+    padding:0px 10px;
+    
+}
+.menu  ul li a {
+    display: inline-block;
+    padding:0px 15px;
+    border-radius: 7px;
+}
+
+.menu  ul li a:hover {
+    
+    background-color: orange;
+    color: #032420;
+    transition: all 0.5s;
+}
+.icon_menu ul li a:hover{
+    color: orange;
+}
+
+@media screen and (max-width:890px) {
+    nav {
+        flex-direction: column;
+        
+        align-items: center;
+        width:100%;
+    }
+    .menu {
+        width:100%;
+    }
+    .menu ul {
+   
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width:100%;
+        margin-bottom: 20px;
+    }
+    .menu ul li{
+      
+        padding: 5px 0px;
+        width:100%;
+    }
+    .menu ul li a {
+        display: block;
+        text-align: center;
+    }
+    
+    .menu .hidden{
+        /* display:none; */
+    
+    }
+    .icon_menu {
+        /* margin-top:10px;  */
+    }
+    .icon_menu .hidden {
+       
+        display:none; 
+    }
+    .logo {
+        align-self: flex-start;
+    }
+    .hamburger {
+        display:block;
+        position: fixed;
+        top:25px;
+        right : 41px;
+        cursor: pointer;
+        
+    }
+
+    .hamburger:hover {
+        color:orange;
+    }
+}
+
+img { 
+	margin-top :20px;
+	width:80%;
+	border-radius : 20px;
+
+	filter: drop-shadow(0px 0px 15px orange);
+}

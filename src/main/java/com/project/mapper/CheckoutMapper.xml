@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CheckoutMapper">
+<insert id="addCheckout">
+		INSERT INTO checkout_tb (isbn, userid, retdate)
+		values (#{isbn}, #{userid}, sysdate + 21)
+</insert>
+<select id="getbyisbn" resultType="com.project.domain.CheckoutVO">	
+		select * from checkout_tb where isbn = #{isbn}	
+</select>
+<select id="getbyuserid" resultType="com.project.domain.CheckoutVO">	
+		select * from checkout_tb where userid = #{userid}	
+</select>
+<delete id="delete">
+		delete checkout_tb where isbn = #{isbn}
+</delete>
+</mapper>

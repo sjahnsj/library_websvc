@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.BookMapper">
+
+<select id="getList" resultType="com.project.domain.BookVO">	
+		select * from BOOK_TB order by regdate desc		
+</select>
+<select id="get" resultType="com.project.domain.BookVO">	
+		select * from BOOK_TB where isbn = #{isbn}	
+</select>
+<insert id="addBook">
+		INSERT INTO BOOK_TB (ISBN, TITLE, AUTHOR, ISSUEYEAR, category)
+		values (#{isbn}, #{title}, #{author}, #{issueyear}, #{category})
+</insert>
+<update id="modifyBook">
+		update BOOK_TB
+		set title = #{title},
+		author = #{author},
+		category = #{category},
+		issueyear = #{issueyear},
+		avail = #{avail}
+		where isbn = #{isbn}
+	</update>
+<delete id="delete">
+		delete BOOK_TB where isbn = #{isbn}
+</delete>
+</mapper>

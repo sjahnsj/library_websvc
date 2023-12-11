@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.MemberMapper">
+
+<resultMap type="com.project.domain.MemberVO" id="memberMap">
+    <id property="userid" column="userid"/>
+    <result property="userid" column="userid"/>
+    <result property="userpw" column="userpw"/>
+    <result property="username" column="username"/>
+    <result property="chkavail" column="chkavail"/>
+    <result property="regdate" column="regdate"/>
+    <collection property="authList" resultMap="authMap">
+    </collection> 
+  </resultMap>
+  
+  <resultMap type="com.project.domain.AuthVO" id="authMap">
+    <result property="userid" column="userid"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  
+  <select id="read" resultMap="memberMap">
+SELECT 
+  mem.userid,  userpw, username, enabled, chkavail, regdate, auth
+FROM 
+  member_tb mem LEFT OUTER JOIN member_tb_auth auth on mem.userid = auth.userid 
+WHERE mem.userid = #{userid} 
+  </select>
+
+
+<update id="setavail">
+		update MEMBER_TB
+		set chkavail = #{param2}
+		where userid = #{param1}
+</update>
+
+<insert id="regiMember">
+		INSERT INTO MEMBER_TB (USERID, USERPW, USERNAME)
+		values (#{userid}, #{userpw}, #{username})
+</insert>
+<select id="getList" resultType="com.project.domain.MemberVO">	
+		select * from MEMBER_TB order by regdate desc		
+</select>
+<select id="get" resultType="com.project.domain.MemberVO">	
+		select * from MEMBER_TB where userid = #{userid}	
+</select>
+<delete id="delete">
+		delete MEMBER_TB where userid = #{userid}
+</delete>
+</mapper>
